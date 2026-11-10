@@ -5,7 +5,7 @@ import os
 # Add src to sys.path so tests can import cart_pricing directly
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
-from cart_pricing import (
+from src.cart_pricing import (
     calculate_subtotal,
     calculate_tier_discount,
     calculate_shipping_fee,
