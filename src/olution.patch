@@ -1,0 +1,13 @@
+[1mdiff --git a/src/cart_pricing.py b/src/cart_pricing.py[m
+[1mindex c033e71..78c3d9c 100644[m
+[1m--- a/src/cart_pricing.py[m
+[1m+++ b/src/cart_pricing.py[m
+[36m@@ -44,7 +44,7 @@[m [mdef calculate_tier_discount(subtotal: float, tier: str,items: list[dict]) -> flo[m
+     discount_rate = TIER_DISCOUNT_RATES.get(normalized_tier, 0.00)[m
+     allowed_discount = sum([m
+         item["price"] * item["quantity"][m
+[31m-        for item in items if item["is_discountable"] or item["category"] != "gift_card"[m
+[32m+[m[32m        for item in items if item.get("is_discountable","") or item["category"].lower().strip() != "gift_card"[m
+     )[m
+ [m
+     return round(allowed_discount * discount_rate, 2)[m
