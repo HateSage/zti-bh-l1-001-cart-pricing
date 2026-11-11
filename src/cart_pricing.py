@@ -44,7 +44,7 @@ def calculate_tier_discount(subtotal: float, tier: str,items: list[dict]) -> flo
     discount_rate = TIER_DISCOUNT_RATES.get(normalized_tier, 0.00)
     allowed_discount = sum(
         item["price"] * item["quantity"]
-        for item in items if item.get("is_discountabl","") or item["category"].lower().strip() != "gift_card"
+        for item in items if item.get("is_discountable",True) and item["category"].lower().strip() != "gift_card"
     )
 
     return round(allowed_discount * discount_rate, 2)
